@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout}">
+<head>
+</head>
+<body ng-controller="utilisateurController" ng-init="init()">
+	<div layout:fragment="content">
+		<div class="content-wrapper">
+		
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-1">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="">Administration</a></li>
+                                    <li class="breadcrumb-item active">Utilisateur</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="content-body">
+				<div class="row">
+				
+					<div class="col-lg-3 col-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Filtre</h4>
+								<div class="heading-elements visible">
+									<ul class="list-inline mb-0">
+										<li><a data-action="collapse"><i class="feather icon-chevron-down"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="card-content collapse show">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-12">
+											<fieldset class="form-group">
+												<label>Rôle</label> 
+												<select class="form-control square" name="role"
+													ng-model="filtre.role" required="required"
+													ng-options="i.id as i.libelle for i in roles"></select>
+											</fieldset>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-9 col-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Liste</h4>
+								<div class="heading-elements">
+									<ul class="list-inline mb-0">
+										<li><button type="button" class="btn btn-icon btn-outline-success btn-sm waves-effect waves-light" ng-click="add()"><i class="feather icon-plus"></i></button></li>
+									</ul>
+								</div>
+								<div class="heading-elements">
+									<ul class="list-inline mb-0">
+										<li><button type="button" class="btn btn-icon btn-outline-success btn-sm waves-effect waves-light" ng-click="update()"><i class="feather icon-plus"></i></button></li>
+									</ul>
+								</div>
+								<div class="heading-elements">
+									<ul class="list-inline mb-0">
+										<li><button type="button" class="btn btn-icon btn-outline-success btn-sm waves-effect waves-light" ng-click="delete()"><i class="feather icon-plus"></i></button></li>
+									</ul>
+								</div>
+								
+							</div>
+							<div class="card-content">
+								<div class="card-body card-dashboard">
+									<div class="table-responsive">
+										<table id="utilisateurTable" class="table">
+											<thead>
+												<tr>
+													<th></th>
+													<th>Nom d'utilisateur</th>
+													<th>Nom</th>
+													<th>Prénom</th>
+													<th>Email</th>
+													<th>Actif</th>
+													<th>Opérations</th>
+												</tr>
+											</thead>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+
+		</div>
+		
+		<!-- Modal -->
+		<div id="utilisateurModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+				<div class="modal-content" style="max-height: calc(100vh - 3.5rem)">
+					<div class="modal-header">
+						<h5 class="modal-title">Formulaire</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body pt-3">
+
+						<form >
+							<input type="hidden" class="form-control square" ng-model="dto.id"> 
+							<div class="row">
+								<div class="col-md-6 col-12">
+									<fieldset class="form-label-group">
+										<input type="text" class="form-control square" placeholder="Login" ng-model="dto.login" tabindex="1"> 
+										<label>Login</label>
+									</fieldset>
+									<fieldset class="form-label-group">
+										<input type="text" class="form-control square" placeholder="Prénom" ng-model="dto.prenom" tabindex="1"> 
+										<label>Prénom</label>
+									</fieldset>
+									<fieldset class="form-label-group">
+										<input type="checkbox" class="ml-1" name="actif" ng-model="dto.actif">
+										<label>Actif</label>
+									</fieldset>
+								</div>
+								<div class="col-md-6 col-12">
+									<fieldset class="form-label-group">
+										<input type="text" class="form-control square" placeholder="Nom" ng-model="dto.nom" tabindex="1"> 
+										<label>Nom</label>
+									</fieldset>
+									<fieldset class="form-label-group">
+										<input type="text" class="form-control square" placeholder="Email" ng-model="dto.email" tabindex="3"> 
+										<label>Email</label>
+									</fieldset>
+								</div>
+							</div>
+						</form>
+
+					</div>
+					<div class="col-lg-12 col-12 mt-2">
+    <button type="button" class="btn btn-icon btn-outline-primary btn-sm waves-effect waves-light" ng-click="redirectToCreateUserPage()">
+        <i class="feather icon-plus"></i> Créer un utilisateur
+    </button>
+</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary square" ng-click="save()">Enregistrer</button>	
+											
+					</div>
+					
+					
+				</div>
+				
+			</div>
+		</div>
+
+
+	</div>
+	
+	<div layout:fragment="plugins" class="page-content">
+		<script th:src="@{/resources/static/js/administration/utilisateur.js}"></script>
+	</div>
+	
+</body>
+</html>

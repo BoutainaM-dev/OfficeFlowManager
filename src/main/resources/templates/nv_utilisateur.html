@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+</head>
+<body>
+
+    <h2>Create New User</h2>
+
+    <form id="userForm" enctype="multipart/form-data">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" required><br>
+
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select><br>
+
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*"><br>
+
+        <label for="superior_id">Superior ID:</label>
+        <input type="text" id="superior_id" name="superior_id"><br>
+
+        <label for="superior_email">Superior Email:</label>
+        <input type="email" id="superior_email" name="superior_email"><br>
+
+        <button type="button" onclick="createUser()">Create User</button>
+    </form>
+
+    <script>
+        function createUser() {
+            // You can add JavaScript logic here to handle form submission
+            // e.g., use AJAX to send the form data to the server
+            // For simplicity, this example just logs the form data to the console
+            const formData = new FormData(document.getElementById('userForm'));
+            for (const pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+        }
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout}">
+<head>
+</head>
+<body ng-controller="demandeController" th:attr="ng-init='init('+${editAuthority}+');'">
+	<div layout:fragment="content">
+		<div class="content-wrapper">
+		
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-1">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">Gestion</li>
+                                    <li class="breadcrumb-item active">Demandes</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="content-body">
+				<div class="row">
+
+					<div class="col-lg-12 col-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Liste</h4>
+								<div class="heading-elements">
+									<ul class="list-inline mb-0">
+										<li><a th:href="@{/gestion/demande/add}" class="btn btn-outline-success btn-md waves-effect waves-light"><i class="feather icon-plus"></i> Ajouter</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="card-content">
+								<div class="card-body card-dashboard">
+									<div class="table-responsive">
+										<table id="demandeTable" class="table">
+											<thead>
+												<tr>
+													<th></th>
+													<th>Demandeur</th>
+													<th>Date demande</th>
+													<th>Projet</th>
+													<th>Nombre nuits</th>
+													<th>Moyenne de transport</th>
+													<th>Statut demande</th>
+													<th>Opérations</th>
+												</tr>
+											</thead>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+
+		</div>
+		
+		<!-- Modal -->
+		<div id="demandeModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+				<div class="modal-content" style="max-height: calc(100vh - 3.5rem); height: 500px">
+					<div class="modal-header">
+						<h5 class="modal-title">Formulaire</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body pt-3">
+
+						<form>
+							<input type="hidden" class="form-control square" ng-model="dto.id"> 
+							<fieldset ng-disabled="true">
+							<div class="row">
+								<div class="col-md-6 col-12">
+									<fieldset class="form-group form-select">
+										<select class="form-control square"
+											name=ville ng-model="dto.villeDepId" required="required"
+											ng-options="i.id as i.libelle for i in villes"></select>
+										<label>Ville départ</label>
+									</fieldset>
+									<fieldset class="form-group form-select">
+										<select class="form-control square"
+											name="projet" ng-model="dto.projetId" required="required"
+											ng-options="i.id as i.libelle for i in projets"></select>
+										<label>Projet</label>
+									</fieldset>
+									<fieldset class="form-label-group">
+										<input type="text" class="form-control square" placeholder="Date début" ng-model="dto.dateDebut"> 
+										<label>Date début</label>
+									</fieldset>
+									<fieldset class="form-label-group">
+										<input type="text" class="form-control square" placeholder="Nombre nuitées" ng-model="dto.nombreNuits"> 
+										<label>Nombre de nuitées</label>
+									</fieldset>
+									<fieldset class="form-label-group">
+										<input type="text" class="form-control square" placeholder="Statut" ng-model="dto.statut"> 
+										<label>Statut</label>
+									</fieldset>
+								</div>
+								<div class="col-md-6 col-12">
+									<fieldset class="form-group form-select">
+										<select class="form-control square"
+											name=ville ng-model="dto.villeDestId" required="required"
+											ng-options="i.id as i.libelle for i in villes"></select>
+										<label>Ville destination</label>
+									</fieldset>
+									<fieldset style="height: 60px"></fieldset>
+									<fieldset class="form-label-group">
+										<input type="text" class="form-control square" placeholder="Date fin" ng-model="dto.dateFin"> 
+										<label>Date fin</label>
+									</fieldset>
+									<fieldset class="form-group form-select">
+										<select class="form-control square"
+											name="projet" ng-model="dto.moyenneTransId" required="required"
+											ng-options="i.id as i.libelle for i in moyenneTrans"></select>
+										<label>Moyenne de transport</label>
+									</fieldset>
+								</div>
+							</div>
+							</fieldset>
+							<div class="row">
+								<div class="col-12">
+<!-- 									<fieldset> -->
+<!-- 										<legend>Calcul</legend> -->
+<!-- 									</fieldset> -->
+								</div>
+							</div>
+						</form>
+
+					</div>
+<!-- 					<div class="modal-footer"> -->
+<!-- 						<button type="button" class="btn btn-primary square" ng-click="save()">Enregistrer</button> -->
+<!-- 					</div> -->
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	
+	<div layout:fragment="plugins" class="page-content">
+		<script th:src="@{/resources/static/js/gestion/demande/demande.js}"></script>
+	</div>
+	
+</body>
+</html>

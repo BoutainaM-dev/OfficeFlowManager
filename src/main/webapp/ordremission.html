@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragments/layout}">
+<head>
+    <title>Ordre de Mission</title>
+    <style>
+        body {
+            background-color: #7d72fd;
+            color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        input[type="button"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        select:focus {
+            border-color: #333;
+            outline: none;
+        }
+
+        .radio-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .radio-container label {
+            color: #444;
+        }
+
+        #Montant label {
+            color: #444;
+        }
+
+        #Montant input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            background-color: #e8474c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover,
+        input[type="button"]:hover {
+            background-color: #d43f44;
+        }
+        .btn {
+        width: 250px;
+        height: 60px; 
+        font-size: 14px; 
+    }
+    </style>    
+</head>
+<body>
+	<div layout:fragment="content">
+    <h1>Ordre de Mission :</h1>
+    <form name="OrdreMission" method="post" action="/submitMission" class="container">
+        <div class="form-group">
+            <label for="Nom">Nom :</label>
+            <input type="text" class="form-control" name="Nom" required>
+        </div>
+        <div class="form-group">
+            <label for="Prenom">Prénom :</label>
+            <input type="text" class="form-control" name="Prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="Poste">Poste :</label>
+            <input type="text" class="form-control" name="Poste" required>
+        </div>
+        <div class="form-group">
+            <label for="Motif">Motif de mission :</label>
+            <input type="text" class="form-control" name="Motif" required>
+        </div>
+        <div class="form-group">
+            <label for="Projet">Projet :</label>
+            <input type="text" class="form-control" name="Projet" required>
+        </div>
+        <div class="form-group">
+            <label for="dateDepart">Date de départ :</label>
+            <input type="date" class="form-control" name="dateDepart" required>
+        </div>
+        <div class="form-group">
+            <label for="dateRetour">Date de retour :</label>
+            <input type="date" class="form-control" name="dateRetour" required>
+        </div>
+        <div class="form-group">
+            <label for="destination">Destination :</label>
+            <input type="text" class="form-control" name="destination" required>
+        </div>
+        <div class="form-group">
+            <label for="moyenTransport">Moyen de transport :</label>
+            <div class="radio-container">
+                <input type="radio" name="moyenTransport" value="Train" required>
+                <label for="Train">Train</label>
+                <input type="radio" name="moyenTransport" value="Avion" required>
+                <label for="Avion">Avion</label>
+                <input type="radio" name="moyenTransport" value="Voiture perso" required>
+                <label for="voiturePerso">Voiture personnelle</label>
+                <input type="radio" name="moyenTransport" value="Voiture de service" required>
+                <label for="voitureService">Voiture de service</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hebergement">Hébergement :</label>
+            <input type="text" class="form-control" name="hebergement" required>
+        </div>
+        <div class="form-group">
+            <label for="activites">Activités planifiées :</label>
+            <input type="text" class="form-control" name="activites" required>
+        </div>
+</form>
+</div>
+</body>
+</html>
+

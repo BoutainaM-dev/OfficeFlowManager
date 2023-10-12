@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout}">
+<head>
+</head>
+<body ng-controller="indexController" ng-init="init()" ng-cloak=""> <!-- we mentioned the controller  it s an AngularJS controller situated in webapp/ressources/js/gestion!! -->
+	<div layout:fragment="content">
+		<div class="content-wrapper">
+
+			<section id="dashboard-analytics">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <div class="card bg-analytics text-white">
+                                <div class="card-content">
+                                    <div class="card-body text-center">
+                                        <div class="avatar avatar-xl bg-warning shadow mt-0">
+                                            <div class="avatar-content">
+                                                <i class="feather icon-user white font-large-1"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <h1 class="mb-2 text-white">Bienvenue <span th:text="${USERNAME}"></span>,</h1>
+                                            <div class="divider divider-warning" style="margin: 0">
+                                            <div class="divider-text" style="background: transparent"><i class="feather icon-clock"></i></div>
+                                          </div>
+                                            <p class="m-auto w-75">Dernière connexion le <span th:text="${LAST_CONNECTION_D}"></span> à <span th:text="${LAST_CONNECTION_H}"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-4 col-sm-12" sec:authorize="hasRole('ROLE_ADMIN')">
+                        			<div class="row">
+                        				<div class="col-md-6 col-12" >
+                        				<a href="/gestion/demande">
+				                           <div class="card text-center">
+				                                <div class="card-content">
+				                                    <div class="card-body">
+				                                        <div class="avatar bg-rgba-primary p-50 m-0 mb-1">
+				                                            <div class="avatar-content">
+				                                                <i class="feather icon-folder text-primary font-medium-5"></i>
+				                                            </div>
+				                                        </div>
+				                                        <h2 class="text-bold-700">{{count.demandes}}</h2>
+				                                        <p class="mb-0 line-ellipsis">Demandes</p>
+				                                    </div>
+				                                </div>
+				                            </div></a>
+			                            </div>
+		                           		<div class="col-md-6 col-12">
+				                           <div class="card text-center">
+				                                <div class="card-content">
+				                                    <div class="card-body">
+				                                        <div class="avatar bg-rgba-warning p-50 m-0 mb-1">
+				                                            <div class="avatar-content">
+				                                                <i class="feather icon-book text-warning font-medium-5"></i>
+				                                            </div>
+				                                        </div>
+				                                        <h2 class="text-bold-700">{{count.ordreMission}}</h2>
+				                                        <p class="mb-0 line-ellipsis">Ordre Mission</p>
+				                                    </div>
+				                                </div>
+				                            </div>
+			                            </div>
+		                            </div>
+		                            <div>
+		                            <a href="administration/utilisateur">
+									    <div class="card">
+									        <div class="card-header d-flex align-items-start pb-1">
+									            <div>
+									                <h2 class="text-bold-700 mb-0">{{count.utilisateurs}}</h2>
+									                <p>Utilisateurs</p>
+									            </div>
+									            <div class="avatar bg-rgba-danger p-50 m-0">
+									                <div class="avatar-content">
+									                    <i class="feather icon-award text-danger font-medium-5"></i>
+									                </div>
+									            </div>
+									        </div>
+									    </div>
+									</a>
+
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-4 col-12">
+                        	<div class="card">
+                                <div class="card-header mb-1">
+                                    <h4 class="card-title">Actualités</h4>
+                                </div>
+                                <div class="card-content">
+                                    <img class="img-fluid" th:src="@{/resources/assets/template/images/slider/covid-19.jpg}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <p class="card-text"> Office habits that make people happier </p>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-muted" style="padding: 1rem 1.5rem">
+                                    <span class="float-left">il y a 3 heures</span>
+                                    <span class="float-right">
+                                        <a href="#" class="card-link">Plus <i class="fa fa-angle-right"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-4 col-12" sec:authorize="hasRole('ROLE_USER')">
+                        <div class="row">
+                            <div class="col-md-6 col-12" >
+                                <a href="/gestion/nouvelle-demande-conge">
+                                    <div class="card text-center">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="avatar bg-rgba-primary p-50 m-0 mb-1">
+                                                    <div class="avatar-content">
+                                                        <i class="feather icon-file-text text-primary font-medium-5"></i>
+                                                    </div>
+                                                </div>
+                                                <h2 class="text-bold-700"> <!-- Add count for Nouvelle-demande-congé --></h2>
+                                                <p class="mb-0 line-ellipsis">Nouvelle demande congé</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <a href="/gestion/demande/dd">
+                                    <div class="card text-center">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="avatar bg-rgba-warning p-50 m-0 mb-1">
+                                                    <div class="avatar-content">
+                                                        <i class="feather icon-map-pin text-warning font-medium-5"></i>
+                                                    </div>
+                                                </div>
+                                                <h2 class="text-bold-700"> <!-- Add count for Nouvelle-demande-deplacement --></h2>
+                                                <p class="mb-0 line-ellipsis">Nouvelle demande déplacement</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                </section>
+
+		</div>
+	</div>
+	
+	<div layout:fragment="plugins" class="page-content">
+		<script th:src="@{/resources/static/js/index.js}"></script>
+	</div>
+	
+</body>
+</html>

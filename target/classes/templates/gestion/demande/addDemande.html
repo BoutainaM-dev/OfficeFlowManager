@@ -1,0 +1,118 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout}">
+<head>
+    <style>
+        .content-body{
+            margin-left: 25%;
+            margin-right: 25%;
+        }
+    </style>
+</head>
+<body ng-controller="demandeController" ng-init="init()">
+	<div layout:fragment="content">
+		<div class="content-wrapper">
+		
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-1">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">Gestion</li>
+                                    <li class="breadcrumb-item">Demandes</li>
+                                    <li class="breadcrumb-item active">Nouvelle demande</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="content-body">
+				<div class="row">
+
+					<div class="col-lg-12 col-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Formulaire</h4>
+								
+							</div>
+							<div class="card-content">
+								<div class="card-body card-dashboard">
+								
+									<form >
+										<input type="hidden" class="form-control square" ng-model="dto.id"> 
+										<div class="row">
+											<div class="col-12">
+												<fieldset class="form-group form-select">
+													<select class="form-control square"
+														name=ville ng-model="dto.villeDepId" required="required"
+														ng-options="i.id as i.libelle for i in villes"></select>
+													<label>Ville départ</label>
+												</fieldset>
+												<fieldset class="form-group form-select">
+													<select class="form-control square"
+														name=ville ng-model="dto.villeDestId" required="required"
+														ng-options="i.id as i.libelle for i in villes"></select>
+													<label>Ville destination</label>
+												</fieldset>
+												
+												<fieldset class="form-group form-select">
+													<select class="form-control square"
+														name="projet" ng-model="dto.projetId" required="required"
+														ng-options="i.id as i.libelle for i in projets"></select>
+													<label>Projet</label>
+												</fieldset>
+												
+												<fieldset class="form-label-group">
+													<input type="date" class="form-control square" placeholder="Date début" ng-model="dto.dateDebut"> 
+													<label>Date début</label>
+												</fieldset>
+												<fieldset class="form-label-group">
+													<input type="date" class="form-control square" placeholder="Date fin" ng-model="dto.dateFin"> 
+													<label>Date fin</label>
+												</fieldset>
+												
+												<fieldset class="form-label-group">
+													<input type="text" class="form-control square" placeholder="Nombre nuitées" ng-model="dto.nombreNuits"> 
+													<label>Nombre de nuitées</label>
+												</fieldset>
+												
+												<fieldset class="form-group form-select">
+													<select class="form-control square"
+														name="projet" ng-model="dto.moyenneTransId" required="required"
+														ng-options="i.id as i.libelle for i in moyenneTrans"></select>
+													<label>Moyenne de transport</label>
+												</fieldset>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-12">
+												<button type="button" class="btn btn-primary square" ng-click="save()">Enregistrer</button>
+											</div>
+										</div>
+									</form>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+	
+	<div layout:fragment="plugins" class="page-content">
+		<script th:src="@{/resources/static/js/gestion/demande/addDemande.js}"></script>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Project</title>
+	<link rel="icon" th:href="@{/resources/assets/images/logo.png}" />
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	
+	<!-- ================== BEGIN VUEXY CSS ================== -->
+	<!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/vendors.min.css}" />
+    <!-- END: Vendor CSS-->
+    
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/pickers/pickadate/pickadate.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/forms/select/select2.min.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/editors/quill/katex.min.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/editors/quill/monokai-sublime.min.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/editors/quill/quill.snow.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/tables/datatable/datatables.min.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/file-uploaders/dropzone.min.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/extensions/nouislider.min.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/ui/prism.min.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/extensions/sweetalert2.min.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/extensions/toastr.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/extensions/plyr.css}">
+    
+<!--     <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/tables/ag-grid/ag-grid.css}" /> -->
+<!--     <link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/tables/ag-grid/ag-theme-material.css}" /> -->
+    
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/bootstrap-extended.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/colors.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/themes/dark-layout.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/themes/semi-dark-layout.css}" />
+	<!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/core/menu/menu-types/horizontal-menu.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/core/colors/palette-gradient.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/pages/dashboard-analytics.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/pages/card-analytics.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/pages/authentication.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/pages/app-email.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/plugins/file-uploaders/dropzone.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/pages/data-list-view.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/plugins/extensions/noui-slider.min.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/pages/app-ecommerce-shop.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/plugins/extensions/toastr.css}" />
+    <link rel="stylesheet" th:href="@{/resources/assets/template/css/plugins/extensions/media-plyr.css}">
+    <!-- END: Page CSS-->
+	<!-- ================== END VUEXY CSS ================== -->
+	
+	<link rel="stylesheet" th:href="@{/resources/assets/template/vendors/css/pickers/pickadate/pickadate.css}" />
+	
+<!-- 	<link th:href="@{/resources/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css}" rel="stylesheet" /> -->
+<!-- 	<link th:href="@{/resources/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css}" rel="stylesheet" /> -->
+	
+	<link rel="stylesheet" th:href="@{/resources/assets/css/custom.css}" />
+    
+</head>
+<body ng-app="app" class="horizontal-layout horizontal-menu content-left-sidebar email-application navbar-floating footer-static" data-open="hover" data-menu="horizontal-menu" data-col="content-left-sidebar">
+	
+	<th:block th:include="fragments/header ::header"></th:block>
+	<th:block th:include="fragments/menu ::menu"></th:block>
+	
+	<!-- BEGIN: Content-->
+	<div class="app-content content">
+		<div class="content-overlay"></div>
+	   	<div class="header-navbar-shadow"></div>
+		<div layout:fragment="content"></div>
+	</div>
+	<!-- END: Content-->
+	
+	<div class="sidenav-overlay"></div>
+	<div class="drag-target"></div>
+	
+	<th:block th:include="fragments/footer ::footer"></th:block>
+	
+	<script th:src="@{/resources/static/js/base/baseServices.js}"></script>
+	
+	<!-- ================== BEGIN VUEXY JS ================== -->
+	<!-- BEGIN: Vendor JS-->
+    <script th:src="@{/resources/assets/template/vendors/js/vendors.min.js}"></script> <!-- first line is commented -->
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script th:src="@{/resources/assets/template/vendors/js/ui/jquery.sticky.js}"></script>
+    <!-- END: Page Vendor JS-->
+    
+    <script th:src="@{/resources/assets/template/vendors/js/forms/validation/jqBootstrapValidation.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/forms/select/select2.full.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/editors/quill/katex.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/editors/quill/highlight.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/editors/quill/quill.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/pagination/jquery.twbsPagination.min.js}"></script>
+
+	<script th:src="@{/resources/assets/template/vendors/js/pickers/pickadate/picker.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/pickers/pickadate/picker.date.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/pickers/pickadate/picker.time.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/pickers/pickadate/legacy.js}"></script>
+    
+    <script th:src="@{/resources/assets/template/vendors/js/extensions/dropzone.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/tables/datatable/datatables.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/tables/datatable/datatables.buttons.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/tables/datatable/datatables.bootstrap4.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/tables/datatable/buttons.bootstrap.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/tables/datatable/dataTables.select.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/tables/datatable/datatables.checkboxes.min.js}"></script>
+    
+    <script th:src="@{/resources/assets/template/vendors/js/ui/prism.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/extensions/wNumb.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/extensions/nouislider.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/extensions/sweetalert2.all.min.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/extensions/toastr.min.js}"></script>
+    
+    <script th:src="@{/resources/assets/template/vendors/js/media/plyr.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/media/plyr.polyfilled.js}"></script>
+    <script th:src="@{/resources/assets/template/js/scripts/extensions/media-plyr.js}"></script>
+    
+<!--     <script th:src="@{/resources/assets/template/vendors/js/tables/ag-grid/ag-grid-community.min.noStyle.js}"></script> -->
+    
+    <!-- BEGIN: Theme JS-->
+    <script th:src="@{/resources/assets/template/js/core/app-menu.js}"></script>
+    <script th:src="@{/resources/assets/template/js/core/app.js}"></script>
+    <script th:src="@{/resources/assets/template/js/scripts/components.js}"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script th:src="@{/resources/assets/template/js/scripts/forms/form-tooltip-valid.js}"></script>
+    <script th:src="@{/resources/assets/template/js/scripts/forms/validation/form-validation.js}"></script>
+    <!-- END: Page JS-->
+    
+    <script th:src="@{/resources/assets/template/js/scripts/pages/app-email.js}"></script>
+    <script th:src="@{/resources/assets/template/js/scripts/ui/data-list-view.js}"></script>
+    <script th:src="@{/resources/assets/template/js/scripts/pages/app-ecommerce-shop.js}"></script>
+<!--     <script th:src="@{/resources/assets/template/js/scripts/ag-grid/ag-grid.js}"></script> -->
+	<!-- ================== END VUEXY JS ================== -->
+	
+	<script th:src="@{/resources/assets/template/vendors/js/pickers/pickadate/picker.js}"></script>
+    <script th:src="@{/resources/assets/template/vendors/js/pickers/pickadate/picker.date.js}"></script>
+    
+<!-- 	<script th:src="@{/resources/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script> -->
+<!-- 	<script th:src="@{/resources/plugins/bootstrap-datepicker/js/bootstrap-datepicker.fr.js}"></script> -->
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			(function($) {
+				$(window).load(function() {
+					$(".table").on("mresize", function() {
+						$.fn.dataTable.tables({
+							visible : true,
+							api : true
+						}).columns.adjust();
+					});
+				});
+			})(jQuery);
+		});
+	</script>
+	
+	<div id="plugins" layout:fragment="plugins"></div>
+	
+</body>
+</html>
